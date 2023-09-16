@@ -17,7 +17,7 @@ const style = {
   p: 4,
 };
 
-export default function AddContact({ open, setOpen }) {
+export default function AddConversation({ open, setOpen }) {
   const handleClose = () => setOpen(false);
 
   return (
@@ -30,7 +30,7 @@ export default function AddContact({ open, setOpen }) {
       >
         <Box sx={style}>
           <Typography variant="h5" sx={{ mb: 3 }}>
-            Add New Contact
+            Add New Conversation
           </Typography>
           <TextField
             id="outlined-basic"
@@ -41,7 +41,7 @@ export default function AddContact({ open, setOpen }) {
           />
           <TextField
             id="outlined-basic"
-            label="Name"
+            label="Enter  Id"
             variant="outlined"
             fullWidth
             sx={{ mb: 2 }}

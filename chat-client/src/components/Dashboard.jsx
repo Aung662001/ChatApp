@@ -16,6 +16,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import AddContact from "./AddContact";
 import Conversation from "./Conversation";
+import AddConversation from "./AddConversation";
 
 const CONS_KEY = "Conversation";
 const CONTACTS = "Contacts";
@@ -59,22 +60,39 @@ function Dashboard({ id }) {
         component="main"
         sx={{
           p: 3,
-          color: "white",
+          color: "black",
           width: "400px",
           height: "80vh",
+          paddingTop: "30px",
         }}
       >
         {nav1 ? <Conversation /> : "Contacts"}
       </Box>
       {nav1 ? (
-        <Button
-          variant="contained"
-          onClick={() => {
-            setOpenContact(true);
-          }}
-        >
-          Add Conversation
-        </Button>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <span>
+            <b style={{ userSelect: "none" }}>YourId:</b>{" "}
+            <small
+              onClick={(e) => {
+                navigator.clipboard.writeText(e.target.innerText);
+                e.target.innerText = "copied";
+                setTimeout(() => {
+                  e.target.innerText = id;
+                }, 500);
+              }}
+            >
+              {id}
+            </small>
+          </span>
+          <Button
+            variant="contained"
+            onClick={() => {
+              setOpenConversation(true);
+            }}
+          >
+            Add Conversation
+          </Button>
+        </div>
       ) : (
         <Button
           variant="contained"
@@ -86,6 +104,7 @@ function Dashboard({ id }) {
         </Button>
       )}
       <AddContact open={openContact} setOpen={setOpenContact} />
+      <AddConversation open={openConversation} setOpen={setOpenConversation} />
     </div>
   );
 }
